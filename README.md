@@ -20,7 +20,7 @@ const state = Paramus({
       // Triggers whenever an unexpected error is thrown
    },
    storeType: 'url', // url (default) | sessionStorage | localStorage | cookie | none | indexedDB | webSQL
-   nestingSeparator: '_' // if the state contains other objects, this will be used as a deliminator to generate unique keys, ex: {foo: {bar: 3}, biz: 1} => ?foo.bar=3&biz=1
+   nestingSeparator: '.' // if the state contains other objects, this will be used as a deliminator to generate unique keys, ex: {foo: {bar: 3}, biz: 1} => ?foo.bar=3&biz=1
 });
 
 console.log(state.foo); // 3
