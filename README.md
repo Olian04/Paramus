@@ -3,12 +3,13 @@
 Default value can be a string, a number, a boolean or an array of any one of those types. 
 Stretch: objects (iterate through every key and do the basic bind on each) 
 
+```
 const state = Paramus(defaultsObject);
 
 const Paramus = StateObserver(initStateObj, onChangeCallback);
 // Setup a state container with a specific initial state and a callback on changes
 
-Ex:
+//ex:
 const Paramus = StateObserver(() => ({
   foo: [42],
   ‎biz: 'hello'
@@ -21,15 +22,17 @@ const state = Paramus({
 });
 
 state.baz( 7 ); // logs { foo: [42], bar: 3, baz: 7} 
+```
 
-
-
-API:
+```
+//API:
 const foo = Paramus('foo', 3);
 let f = foo(); // f === 3
 f = foo(42); //  f === 42
+```
 
-Internal mock:
+```
+//Internal mock:
 const createParamus = store => (key, initValue) => {
    let value = store.get(key) || initValue;
    ‎return (...args) => {
@@ -57,3 +60,4 @@ const Params = createParams( () => {
 });
 
 const Paramus = createParamus(Params);
+```
