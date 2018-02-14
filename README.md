@@ -2,10 +2,16 @@
 
 ### MVP
 
+`Paramus(initialState, options)`
+
 ```
 const state = Paramus({
    foo: 3, 
    bar: 42
+}, {
+   onChange(newState, oldState, diffState) {
+   },
+   storeType: 'url' // url (default) | sessionStorage | localStorage | cookie | none | indexedDB | webSQL
 });
 
 console.log(state.foo); // 3
