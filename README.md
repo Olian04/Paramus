@@ -1,5 +1,20 @@
 # Paramus
 
+### MVP
+
+```
+const state = Paramus({
+   foo: 3, 
+   bar: 42
+});
+
+console.log(state.foo); // 3
+state.foo = 7;
+console.log(state.foo); // 7
+```
+https://jsfiddle.net/rcbu9e29/27/
+
+### Original design doc
 Default value can be a string, a number, a boolean or an array of any one of those types. 
 Stretch: objects (iterate through every key and do the basic bind on each) 
 
