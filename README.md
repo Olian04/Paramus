@@ -4,7 +4,7 @@ Note to self: Design system with different storeTypes in mind. Maybe like a plug
 
 `Paramus(initialState, options)`
 
-```
+```js
 const state = Paramus({
    foo: 3, 
    bar: 42
@@ -21,7 +21,7 @@ const state = Paramus({
    onError(error) {
       // Triggers whenever an unexpected error is thrown
    },
-   storeType: 'url', // url (default) | sessionStorage | localStorage | cookie | none | indexedDB | webSQL
+   storeType: 'url', // url (default) | sessionStorage | localStorage | cookie | object | indexedDB | webSQL
    nestingSeparator: '.' // if the state contains other objects, this will be used as a deliminator to generate unique keys, ex: {foo: {bar: 3}, biz: 1} => ?foo.bar=3&biz=1
 });
 
@@ -34,3 +34,24 @@ console.log(state.foo); // 7
 ```
 https://jsfiddle.net/rcbu9e29/27/
 
+## Extend Paramus 
+`Paramus.storeType(name, extentionpoints);`
+
+```js
+Paramus.storeType('url', {
+   get(key) {
+      // Called whenever a parameter is read from 
+   },
+   set(key, value) {
+      // Called whenever a parameter is assigned to
+   },
+   load(defaultState) {
+      // Called when a new instance of Paramus is instanciated with the storeType equal to 'url'
+      // defaultState is the state object passed to Paramus
+   }, 
+   snapshot() {
+      // Needs to return a string representation of the current state
+      // Used for testing
+   }
+});
+```
