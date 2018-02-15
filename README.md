@@ -7,11 +7,8 @@ const state = Paramus({
    foo: 3, 
    bar: 42
 }, {
-   onChange(newState, oldState, diffState) {
+   onChange(newState) {
       // Triggers whenever a value is changed, ex: state.foo = 42
-   },
-   onAccessed(key, value) {
-      // Triggers when a value is accessed, ex: state.foo
    },
    onLoad(state, foundOldState) {
       // Triggers when the state is ready, foundOldState is true if paramus could load an old state
@@ -32,8 +29,8 @@ console.log( Paramus.snapshot(state) ); // foo=7&bar=42
 ```
 https://jsfiddle.net/rcbu9e29/27/
 
-## Extend Paramus 
-`Paramus.storeType(name, extentionpoints);`
+## Extend Paramus
+### `Paramus.storeType(storeTypeName, extensionPoints)`
 
 ```js
 Paramus.storeType('url', {
@@ -53,3 +50,23 @@ Paramus.storeType('url', {
    }
 });
 ```
+
+### `Paramus.proxy(eventName, callback)`
+
+```js
+Paramus.proxy('onChange', state => {
+   // Triggers prior to the onChange provided in the options object to Paramus
+   // Trigger order:
+   // 1. storeType.set
+   // 2. proxy.onChange
+   // 3. options.onChange
+});
+```
+
+Events: 
+* `onAccessed`
+* `onChange`
+* `onLoad`
+* `onError`
+
+
