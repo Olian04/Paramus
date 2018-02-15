@@ -25,12 +25,12 @@ const state = Paramus({
    nestingSeparator: '.' // if the state contains other objects, this will be used as a deliminator to generate unique keys, ex: {foo: {bar: 3}, biz: 1} => ?foo.bar=3&biz=1
 });
 
-console.log(state.foo); // 3
+console.log( state.foo ); // 3
 state.foo = 7;
-console.log(state.foo); // 7
+console.log( state.foo ); // 7
 
-// URL
-// localhost:8080?foo=7&bar=42
+
+console.log( Paramus.snapshot(state) ); // foo=7&bar=42
 ```
 https://jsfiddle.net/rcbu9e29/27/
 
@@ -51,7 +51,7 @@ Paramus.storeType('url', {
    }, 
    snapshot() {
       // Needs to return a string representation of the current state
-      // Used for testing
+      // Useful when testing or logging entire state
    }
 });
 ```
