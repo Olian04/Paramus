@@ -1,7 +1,5 @@
 # Paramus
 
-Note to self: Design system with different storeTypes in mind. Maybe like a plugin system.
-
 `Paramus(initialState, options)`
 
 ```js
