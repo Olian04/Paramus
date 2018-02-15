@@ -47,7 +47,7 @@ Paramus.storeType('url', {
    }, 
    snapshot() {
       // Needs to return a string representation of the current state
-      // Useful when testing or logging entire state
+      // Useful when testing or logging
    }
 });
 ```
