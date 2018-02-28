@@ -28,7 +28,7 @@ console.log( Paramus.snapshot(state) ); // foo=7&bar=42
 https://jsfiddle.net/rcbu9e29/27/
 
 ## Extend Paramus
-### `Paramus.storeType(storeTypeName: string, extensionPoints: IExtensionPoints)`
+### `Paramus.storeType(storeType: string, extensionPoints: IExtensionPoints)`
 
 ```ts
 Paramus.storeType('url', {
@@ -49,7 +49,7 @@ Paramus.storeType('url', {
 });
 ```
 
-### `Paramus.proxy(eventName: string, callback: (...args: any[]) => any)`
+### `Paramus.proxy(event: string, callback: (...args: any[]) => any)`
 
 ```ts
 Paramus.proxy('onChange', state => {
