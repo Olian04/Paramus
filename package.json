@@ -1,0 +1,37 @@
+{
+  "name": "paramus",
+  "version": "0.1.0",
+  "description": "`Paramus<T>(initialState: T, options: IOptions)`",
+  "main": "dist/paramus.js",
+  "types": "dist/paramus.d.ts",
+  "scripts": {
+    "start": "npm run watch",
+    "watch": "tsc -w",
+    "test": "mocha --recursive -r ts-node/register src/**/*.test.ts",
+    "build": "tsc",
+    "doc": "typedoc --mode file --out docs/ src/paramus.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Olian04/Paramus.git"
+  },
+  "author": "olian04",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Olian04/Paramus/issues"
+  },
+  "homepage": "https://github.com/Olian04/Paramus#readme",
+  "devDependencies": {
+    "@types/assert": "0.0.31",
+    "@types/chai": "^4.1.2",
+    "@types/es6-promise": "3.3.0",
+    "@types/mocha": "^2.2.48",
+    "@types/node": "^9.4.6",
+    "@types/typescript": "^2.0.0",
+    "chai": "^4.1.2",
+    "mocha": "^5.0.1",
+    "ts-node": "^5.0.0",
+    "typedoc": "^0.10.0",
+    "typescript": "^2.7.2"
+  }
+}
