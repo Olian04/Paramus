@@ -2,16 +2,13 @@
 
 `Paramus(initialState, options)`
 
-```js
+```ts
 const state = Paramus({
    foo: 3, 
    bar: 42
 }, {
    onChange(newState) {
       // Triggers whenever a value is changed, ex: state.foo = 42
-   },
-   onLoad(state, foundOldState) {
-      // Triggers when the state is ready, foundOldState is true if paramus could load an old state
    },
    onError(error) {
       // Triggers whenever an unexpected error is thrown
@@ -33,7 +30,7 @@ https://jsfiddle.net/rcbu9e29/27/
 ## Extend Paramus
 ### `Paramus.storeType(storeTypeName, extensionPoints)`
 
-```js
+```ts
 Paramus.storeType('url', {
    get(key) {
       // Called whenever a parameter is read from 
@@ -41,7 +38,7 @@ Paramus.storeType('url', {
    set(key, value) {
       // Called whenever a parameter is assigned to
    },
-   load(defaultState) {
+   init(defaultState) {
       // Called when a new instance of Paramus is instanciated with the storeType equal to 'url'
       // defaultState is the state object passed to Paramus
    }, 
@@ -54,7 +51,7 @@ Paramus.storeType('url', {
 
 ### `Paramus.proxy(eventName, callback)`
 
-```js
+```ts
 Paramus.proxy('onChange', state => {
    // Trigger order:
    // 1. storeType.set
@@ -64,9 +61,8 @@ Paramus.proxy('onChange', state => {
 ```
 
 Events: 
-* `onAccessed`
+* `onSnapshot`
 * `onChange`
-* `onLoad`
 * `onError`
 
 
