@@ -1,6 +1,6 @@
 # Paramus
 
-`Paramus(initialState, options)`
+`Paramus<T>(initialState: T, options: IOptions)`
 
 ```ts
 const state = Paramus({
@@ -28,7 +28,7 @@ console.log( Paramus.snapshot(state) ); // foo=7&bar=42
 https://jsfiddle.net/rcbu9e29/27/
 
 ## Extend Paramus
-### `Paramus.storeType(storeTypeName, extensionPoints)`
+### `Paramus.storeType(storeTypeName: string, extensionPoints: IExtensionPoints)`
 
 ```ts
 Paramus.storeType('url', {
@@ -49,7 +49,7 @@ Paramus.storeType('url', {
 });
 ```
 
-### `Paramus.proxy(eventName, callback)`
+### `Paramus.proxy(eventName: string, callback: (...args: any[]) => any)`
 
 ```ts
 Paramus.proxy('onChange', state => {
