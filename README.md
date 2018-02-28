@@ -32,19 +32,20 @@ https://jsfiddle.net/rcbu9e29/27/
 
 ```ts
 Paramus.storeType('url', {
-   get(key) {
+   get(key: string): any { // TODO: The return type should reflect the value of key in defaultState
       // Called whenever a parameter is read from 
    },
-   set(key, value) {
+   set(key: string, value: any) {
       // Called whenever a parameter is assigned to
    },
-   init(defaultState) {
+   init(defaultState: object) {
       // Called when a new instance of Paramus is instanciated with the storeType equal to 'url'
       // defaultState is the state object passed to Paramus
    }, 
-   snapshot() {
-      // Needs to return a string representation of the current state
-      // Useful when testing or logging
+   snapshot(): object {
+      // Needs to return an object representation of the current state
+      // The object strcture shoudl resemble the structure of the defaultState
+      // Useful when testing
    }
 });
 ```
