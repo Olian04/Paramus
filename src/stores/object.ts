@@ -2,7 +2,7 @@ import { IParamus, Store } from '../index';
 
 export class ObjectStore extends Store {
     private state = {};
-    public readonly name: 'object'
+    public readonly name = 'object';
     public get(key: string): any {
         return this.state[key];
     }
