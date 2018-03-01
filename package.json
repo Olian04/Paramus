@@ -7,7 +7,7 @@
   "scripts": {
     "start": "npm run watch",
     "watch": "tsc -w",
-    "test": "mocha --recursive -r ts-node/register src/**/*.test.ts",
+    "test": "mocha --recursive -r ts-node/register 'src/**/*.test.ts' ",
     "build": "tsc",
     "doc": "typedoc --mode file --out docs/ src/paramus.ts"
   },
