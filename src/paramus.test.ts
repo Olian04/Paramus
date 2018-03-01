@@ -2,7 +2,7 @@ import { expect } from 'chai';
 
 import { Paramus } from './paramus';
 
-it('no array + no object +  no options', () => {
+it('no options', () => {
     const obj = Paramus({
         foo: 42,
         bar: 'hello world'
