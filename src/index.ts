@@ -21,6 +21,7 @@ const getDefaultOptions = <T>(): IOptions<T> => ({
 export interface IParamus {
   <T>(defaultState: T, options?: Partial<IOptions<T>>): T;
   extend(store: Store): void;
+  snapshot<T>()
 }
 
 export const Internal = (): IParamus => {
