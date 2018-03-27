@@ -2,11 +2,13 @@ import { expect } from 'chai';
 
 import { Paramus } from './paramus';
 
-it('no options', () => {
-    const obj = Paramus({
-        foo: 42,
-        bar: 'hello world'
+describe('API', () => {
+    it('no options', () => {
+        const obj = Paramus({
+            foo: 42,
+            bar: 'hello world'
+        });
+        expect(obj.foo).to.equal(42);
+        expect(obj.bar).to.equal('hello world');
     });
-    expect(obj.foo).to.equal(42);
-    expect(obj.bar).to.equal('hello world');
 });
