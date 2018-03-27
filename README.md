@@ -46,7 +46,7 @@ export class ObjectStore extends Store {
         // Used to call onChange
     }
 }
-Paramus.storeType( new ObjectStore() );
+Paramus.extend( new ObjectStore() );
 ```
 
 ### `Paramus.proxy(event: string, callback: (...args: any[]) => any)`
