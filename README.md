@@ -11,13 +11,9 @@ const state = Paramus({
 }, 'url');
 /* url (default) | sessionStorage | localStorage | cookie | object | indexedDB | webSQL */
 
-
 console.log( state.foo ); // 3
 state.foo = 7;
 console.log( state.foo ); // 7
-
-
-console.log( Paramus.snapshot(state) ); // foo=7&bar=42
 ```
 https://jsfiddle.net/rcbu9e29/27/
 
