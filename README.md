@@ -29,10 +29,10 @@ https://jsfiddle.net/rcbu9e29/27/
 ### `Paramus.extend(extension: Store)`
 
 ```ts
-export class ObjectStore extends Store {
+export class ObjectStore implements Store {
     public readonly name = 'object';
     public init(initial: object) {
-      // Called when a new instance of Paramus is created with the storeType equal to <this.name>
+      // Called when a new instance of Paramus is created with the storeType equal to 'object'
       // defaultState is the state object passed to Paramus
     }
     public get(key: string): any {
