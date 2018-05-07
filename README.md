@@ -25,8 +25,8 @@ console.log( Paramus.snapshot(state) ); // foo=7&bar=42
 ```
 https://jsfiddle.net/rcbu9e29/27/
 
-## Extend Paramus
-### `Paramus.storeType(storeType: string, extensionPoints: IExtensionPoints)`
+## Adding your own store
+### `Paramus.extend(extension: Store)`
 
 ```ts
 export class ObjectStore extends Store {
@@ -48,21 +48,5 @@ export class ObjectStore extends Store {
 }
 Paramus.extend( new ObjectStore() );
 ```
-
-### `Paramus.proxy(event: string, callback: (...args: any[]) => any)`
-
-```ts
-Paramus.proxy('onChange', state => {
-   // Trigger order:
-   // 1. storeType.set
-   // 2. proxy.onChange
-   // 3. options.onChange
-});
-```
-
-Events: 
-* `onSnapshot`
-* `onChange`
-* `onError`
 
 
