@@ -1,20 +1,16 @@
 # Paramus
 
-`Paramus<T>(initialState: T, options: IOptions)`
+`Paramus(initialState: object, options: IOptions)`
 
 ```ts
 const state = Paramus({
    foo: 3, 
    bar: 42
-}, {
-   onChange(newState) {
-      // Triggers whenever a value is changed, ex: state.foo = 42
-   },
-   onError(error) {
-      // Triggers whenever an unexpected error is thrown
-   },
-   storeType: 'url', // url (default) | sessionStorage | localStorage | cookie | object | indexedDB | webSQL
-});
+}, newState => {
+   // Triggers whenever a value is changed, ex: state.foo = 42
+}, 'url');
+/* url (default) | sessionStorage | localStorage | cookie | object | indexedDB | webSQL */
+
 
 console.log( state.foo ); // 3
 state.foo = 7;
