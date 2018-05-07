@@ -4,7 +4,9 @@
         "module": "commonjs",
         "sourceMap": true,
         "outDir": "dist/",
-        "declaration": true
+        "declaration": true,
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true
     },
     "include": [
         "src/**/*"
