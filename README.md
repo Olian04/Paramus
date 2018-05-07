@@ -5,13 +5,14 @@
 ```ts
 import { Paramus } from 'paramus';
 
-const state = Paramus({
+/* url (default) | sessionStorage | localStorage | cookie | object | indexedDB | webSQL | <Paramus.extend> */
+const state = Paramus('url', {
    foo: 3, 
    bar: 42
 }, newState => {
    // Triggers whenever a value is changed, ex: state.foo = 42
-}, 'url');
-/* url (default) | sessionStorage | localStorage | cookie | object | indexedDB | webSQL */
+});
+
 
 console.log( state.foo ); // 3
 state.foo = 7;
