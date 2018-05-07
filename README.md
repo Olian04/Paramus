@@ -31,15 +31,15 @@ https://jsfiddle.net/rcbu9e29/27/
 ```ts
 export class ObjectStore extends Store {
     public readonly name = 'object';
+    public init(initial: object) {
+      // Called when a new instance of Paramus is created with the storeType equal to <this.name>
+      // defaultState is the state object passed to Paramus
+    }
     public get(key: string): any {
       // Called whenever a parameter is read from 
     }
     public set(key: string, value: any) {
       // Called whenever a parameter is assigned to
-    }
-    public init(initial: object) {
-      // Called when a new instance of Paramus is instanciated with the storeType equal to 'url'
-      // defaultState is the state object passed to Paramus
     }
     public snapshot() {
         // Needs to return an object representation of the current state
