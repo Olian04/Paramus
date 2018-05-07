@@ -1,6 +1,6 @@
 # Paramus
 
-`Paramus(initialState: object, onChangeCallback: (newState) => void, storeType?: string)`
+`Paramus(storeType?: string, initialState: object, onChangeCallback: newState => void)`
 
 ```ts
 import { Paramus } from 'paramus';
