@@ -3,6 +3,8 @@
 `Paramus(initialState: object, onChangeCallback: (newState) => void, storeType?: string)`
 
 ```ts
+import { Paramus } from 'paramus';
+
 const state = Paramus({
    foo: 3, 
    bar: 42
