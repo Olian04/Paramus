@@ -1,6 +1,6 @@
 # Paramus
 
-`Paramus(initialState: object, options: IOptions)`
+`Paramus(initialState: object, onChangeCallback: (newState) => void, storeType?: string)`
 
 ```ts
 const state = Paramus({
