@@ -17,6 +17,7 @@ describe('url store (empty)', () => {
         expect(typeof objStore.init).to.equal('function');
         expect(typeof objStore.snapshot).to.equal('function');
     });
+    
     it('no unintended side effects', () => {
         const state = Paramus('url', {
             foo: 3, 
@@ -26,6 +27,25 @@ describe('url store (empty)', () => {
             expect(newState.bar).to.equal('hello world');
          });
         expect(state.foo).to.equal(3);
+        state.bar = 'hello world';
+        expect(state.bar).to.equal('hello world');
+    });
+});
+
+describe('url store (?foo=2)', () => {
+    jsdom({
+        url: 'https://www.google.com?foo=2'
+    });
+
+    it('no unintended side effects', () => {
+        const state = Paramus('url', {
+            foo: 3, 
+            bar: ''
+         }, newState => {
+            expect(newState.foo).to.equal(2);
+            expect(newState.bar).to.equal('hello world');
+         });
+        expect(state.foo).to.equal(2);
         state.bar = 'hello world';
         expect(state.bar).to.equal('hello world');
     });
