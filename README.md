@@ -1,6 +1,21 @@
 # Paramus
 
-`Paramus(storeType?: string, initialState: object, onChangeCallback: newState => void)`
+[Demo Fiddle](https://jsfiddle.net/gh/get/library/pure/Olian04/Paramus/tree/master/demo)
+
+## NPM
+```
+npm i --save totable
+```
+
+## CDN
+
+```html
+<script src="https://unpkg.com/totable"></script>
+```
+
+## API
+
+### `Paramus(storeType: string, initialState: object, onChangeCallback: newState => void)`
 
 ```ts
 import { Paramus } from 'paramus';
@@ -13,14 +28,13 @@ const state = Paramus('url', {
    // Triggers whenever a value is changed, ex: state.foo = 42
 });
 
-
 console.log( state.foo ); // 3
 state.foo = 7;
 console.log( state.foo ); // 7
 ```
-https://jsfiddle.net/rcbu9e29/27/
 
 ## Adding your own store
+
 ### `Paramus.extend(extension: Store)`
 
 ```ts

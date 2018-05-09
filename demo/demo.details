@@ -1,0 +1,10 @@
+---
+ name: Paramus
+ description: Demoing Paramus in URL mode
+ authors:
+   - Olian04
+ resources:
+   - https://unpkg.com/paramus
+normalize_css: no
+ js_wrap: d
+ ...
