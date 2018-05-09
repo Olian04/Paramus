@@ -1,16 +1,18 @@
 # Paramus
 
-[Demo Fiddle](https://jsfiddle.net/gh/get/library/pure/Olian04/Paramus/tree/master/demo)
+Paramus is a persistent state-storage for small web applications
+
+[Demo Fiddle (WIP)](https://jsfiddle.net/gh/get/library/pure/Olian04/Paramus/tree/master/demo)
 
 ## NPM
 ```
-npm i --save totable
+npm i --save paramus
 ```
 
 ## CDN
 
 ```html
-<script src="https://unpkg.com/totable"></script>
+<script src="https://unpkg.com/paramus"></script>
 ```
 
 ## API
