@@ -1,5 +1,4 @@
 import { IStore } from '../index';
-import { url } from 'inspector';
 
 const getParams = () => {
     const fixType = val => isNaN(val) ? decodeURI(val) :  parseFloat(val);
