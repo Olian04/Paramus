@@ -20,12 +20,13 @@ npm i --save totable
 ```ts
 import { Paramus } from 'paramus';
 
-/* url | object | sessionStorage | localStorage | cookie | indexedDB | webSQL | <Paramus.extend> */
+/* url | object | <Paramus.extend> + planned "sessionStorage | localStorage | cookie | indexedDB | webSQL"  */
 const state = Paramus('url', {
    foo: 3, 
    bar: 42
 }, newState => {
    // Triggers whenever a value is changed, ex: state.foo = 42
+   // any changes made to  newState won't persist
 });
 
 console.log( state.foo ); // 3
@@ -38,11 +39,11 @@ console.log( state.foo ); // 7
 ### `Paramus.extend(extension: Store)`
 
 ```ts
-export class ObjectStore implements Store {
+class ObjectStore implements Store {
     public readonly name = 'object';
     public init(initial: object) {
       // Called when a new instance of Paramus is created with the storeType equal to 'object'
-      // defaultState is the state object passed to Paramus
+      // initial is the state object passed to Paramus
     }
     public get(key: string): any {
       // Called whenever a parameter is read from 

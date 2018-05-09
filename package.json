@@ -5,8 +5,6 @@
   "main": "dist/paramus.js",
   "types": "dist/paramus.d.ts",
   "scripts": {
-    "start": "npm run watch",
-    "watch": "tsc -w",
     "test": "mocha --recursive -r ts-node/register 'src/**/*.test.ts' ",
     "build": "tsc",
     "doc": "typedoc --mode file --out docs/ src/paramus.ts"
