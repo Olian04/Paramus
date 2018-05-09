@@ -23,16 +23,34 @@ export const Internal = (): IParamus => {
 
     const store: IStore = getStore(storeType);
     if (store === undefined) {
-      throw new Error(`Couldn't find store of type ${storeType}`);
+      throw new Error(`Couldn't find store of type "${storeType}".`);
     }
     store.init(defaultState);
+
+    const update = (key, value) => {
+      store.set(key, value);
+      onChangeCb(<T>store.snapshot());
+    };
     
     return Object.keys(defaultState).reduce((res, k) => {
       Object.defineProperty(res, k, {
-        get: () => store.get(k),
+        get: () => {
+          const v = store.get(k);
+          if ( Array.isArray(v) ) {
+            // Return a proxy that watches for calls like arr[...]
+            return new Proxy(v, {
+              set: (arr, k_, v_) => {
+                  v[k_] = v_;
+                  update(k, v);
+                  return true;
+              }
+            });
+          } else {
+            return v;
+          }
+        },
         set: (val) => { 
-          store.set(k, val); 
-          onChangeCb(<T>store.snapshot());
+          update(k, val);
         }
       });
       return res;
