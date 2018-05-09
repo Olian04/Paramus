@@ -30,11 +30,35 @@ describe('url store (empty)', () => {
         state.bar = 'hello world';
         expect(state.bar).to.equal('hello world');
     });
+
+    it('arrays', () => {
+        const state = Paramus('url', {
+            arr: [1, 2, 3] 
+         }, newState => {
+             expect( Array.isArray(newState.arr) ).true;
+             expect(newState.arr.length).to.equal(3);
+         });
+
+         expect( Array.isArray(state.arr) ).true;
+         expect(state.arr.length).to.equal(3);
+         expect(state.arr[0]).to.equal(1);
+         expect(state.arr[1]).to.equal(2);
+         expect(state.arr[2]).to.equal(3);
+
+         state.arr[0] = 2;
+         expect(state.arr).to.deep.equal([2, 2, 3]);
+
+         state.arr.map(v => v * 2);
+         expect(state.arr).to.deep.equal([2, 2, 3]);
+
+         state.arr = state.arr.map(v => v * 2);
+         expect(state.arr).to.deep.equal([4, 4, 6]);
+    });
 });
 
-describe('url store (?foo=2)', () => {
+describe('url store (?foo=2&arr=3)', () => {
     jsdom({
-        url: 'https://www.google.com?foo=2'
+        url: 'https://www.google.com?foo=2&arr=3'
     });
 
     it('no unintended side effects', () => {
@@ -48,5 +72,21 @@ describe('url store (?foo=2)', () => {
         expect(state.foo).to.equal(2);
         state.bar = 'hello world';
         expect(state.bar).to.equal('hello world');
+    });
+
+    it('arrays', () => {
+        const state = Paramus('url', {
+            arr: [1, 2, 3] 
+         }, newState => {
+             expect( Array.isArray(newState.arr) ).true;
+             expect(newState.arr.length).to.equal(1);
+         });
+
+         expect( Array.isArray(state.arr) ).true;
+         expect(state.arr.length).to.equal(1);
+         expect(state.arr[0]).to.equal(3);
+
+         state.arr[0] = 1;
+         expect(state.arr).to.deep.equal([1]);
     });
 });

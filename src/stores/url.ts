@@ -15,14 +15,26 @@ const getParams = () => {
                     res[k] = [res[k], fixType(v)];
                 }
             } else {
-                res[k] = fixType(v);
+                if (typeMap[k] === 'array') {
+                    res[k] = [ fixType(v) ];
+                } else {
+                    res[k] = fixType(v);
+                }
             }
             return res;
         }, {}); // restructure into an object instead of a 2D list
 }
 
+const typeMap = {};
+
 const setParams = obj => {
-    const str = '?' + Object.keys(obj).map(k => `${k}=${obj[k]}`).join('&');
+    const str = '?' + Object.keys(obj).map(k => {
+        if ( Array.isArray(obj[k]) ) {
+            return obj[k].map(v => `${k}=${v}`).join('&')
+        } else {
+            return `${k}=${obj[k]}`
+        }
+    }).join('&');
     history.pushState({}, document.title, str);
 }
 
@@ -30,7 +42,25 @@ export class UrlStore implements IStore {
     private cache = {};
     public readonly type = 'url';
     public init(initial: object) {
-        this.cache = {...initial, ...getParams()};
+        const prev_params = getParams();
+        const new_params = Object.keys(initial).map(k => {
+            if (Array.isArray(initial[k])) {
+                typeMap[k] = 'array';
+            }
+            if (prev_params[k]  !== undefined) {
+                if (Array.isArray(initial[k]) && !Array.isArray(prev_params[k])) {
+                    return [k, [prev_params[k]]];
+                } else {
+                    return [k, prev_params[k]];
+                }
+            } else {
+                return [k, initial[k]];
+            }
+        }).reduce((res, [k, v]) => {
+            res[k] = v;
+            return res;
+        },{});
+        this.cache = {...prev_params, ...new_params};
         setParams(this.cache);
     }
     public get(key: string): any {
