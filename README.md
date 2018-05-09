@@ -20,7 +20,7 @@ npm i --save totable
 ```ts
 import { Paramus } from 'paramus';
 
-/* url (default) | sessionStorage | localStorage | cookie | object | indexedDB | webSQL | <Paramus.extend> */
+/* url | object | sessionStorage | localStorage | cookie | indexedDB | webSQL | <Paramus.extend> */
 const state = Paramus('url', {
    foo: 3, 
    bar: 42
