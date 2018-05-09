@@ -1,7 +1,7 @@
 {
   "name": "paramus",
-  "version": "0.1.0",
-  "description": "`Paramus<T>(initialState: T, options: IOptions)`",
+  "version": "1.0.0",
+  "description": "Paramus is a persistent state-storage for small web applications",
   "main": "dist/paramus.js",
   "types": "dist/paramus.d.ts",
   "scripts": {
