@@ -2,7 +2,6 @@
     "compilerOptions": {
         "target": "es6",
         "module": "commonjs",
-        "sourceMap": true,
         "outDir": "dist/",
         "declaration": true,
         "allowSyntheticDefaultImports": true,
@@ -10,9 +9,10 @@
         "noImplicitReturns": true
     },
     "include": [
-        "src/**/*"
+        "src/**/*.ts"
     ],
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "src/**/*.test.ts"
     ]
 }
