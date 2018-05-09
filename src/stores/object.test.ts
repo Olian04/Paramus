@@ -13,6 +13,7 @@ describe('object store', () => {
         expect(typeof objStore.init).to.equal('function');
         expect(typeof objStore.snapshot).to.equal('function');
     });
+
     it('no unintended side effects', () => {
         const state = Paramus('object', {
             foo: 3, 
@@ -24,5 +25,20 @@ describe('object store', () => {
         expect(state.foo).to.equal(3);
         state.bar = 'hello world';
         expect(state.bar).to.equal('hello world');
+    });
+
+    it('arrays', () => {
+        const state = Paramus('object', {
+            arr: [1, 2, 3] 
+         }, newState => {
+            expect(newState.arr.length).to.equal(3);
+         });
+         expect(state.arr.length).to.equal(3);
+         expect(state.arr[0]).to.equal(1);
+         expect(state.arr[1]).to.equal(2);
+         expect(state.arr[2]).to.equal(3);
+
+         state.arr[0] = 2;
+         expect(state.arr[0]).to.equal(2);
     });
 });
