@@ -1,8 +1,8 @@
-import { IParamus, Store } from '../index';
+import { IStore } from '../index';
 
-export class ObjectStore extends Store {
+export class ObjectStore implements IStore {
     private state = {};
-    public readonly name = 'object';
+    public readonly type = 'object';
     public get(key: string): any {
         return this.state[key];
     }
