@@ -11,7 +11,7 @@ describe('url store (empty)', () => {
 
     it('implements IStore', () => {
         const objStore = new UrlStore();
-        expect(objStore.type).to.equal('url');
+        expect(objStore.id).to.equal('url');
         expect(typeof objStore.get).to.equal('function');
         expect(typeof objStore.set).to.equal('function');
         expect(typeof objStore.init).to.equal('function');

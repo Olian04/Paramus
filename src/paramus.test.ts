@@ -19,7 +19,7 @@ describe('init / get / set', () => {
 
     it('single value', () => {
         Paramus.extend({
-            type: 'test1',
+            id: 'test1',
             get(key) {    
                 expect(key).to.equal('foo'); 
             },
@@ -41,7 +41,7 @@ describe('init / get / set', () => {
 
     it('array', () => {
         Paramus.extend({
-            type: 'test2',
+            id: 'test2',
             get(key) {    
                 expect(key).to.equal('foo'); 
                 return [1, 2]; // state.foo[0] = 2; <=> v = state.get('foo'); v[0] = 2; state.set('foo', v);

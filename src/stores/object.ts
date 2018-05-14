@@ -2,7 +2,7 @@ import { IStore } from '../index';
 
 export class ObjectStore implements IStore {
     private state = {};
-    public readonly type = 'object';
+    public readonly id = 'object';
     public get(key: string): any {
         return this.state[key];
     }

@@ -1,30 +1,30 @@
 export interface IStore {
-  readonly type: string;
+  readonly id: string;
   init(defaultState: object): void;
   get(key: string): any;
   set(key: string, value: any);
 }
 
 export interface IParamus {
-  <T>(storeType: string, defaultState: T, onChangeCb?: (state: T) => void): T;
+  <T>(storeId: string, defaultState: T, onChangeCb?: (state: T) => void): T;
   extend(store: IStore): void;
 }
 
 export const Internal = (): IParamus => {
   const stores: IStore[] = [];
-  const getStore = (type: string) => stores.find(s => s.type === type);
+  const getStore = (id: string) => stores.find(s => s.id === id);
 
   const paramus: IParamus = function<T extends object>(
-        storeType: string, 
+        storeId: string, 
         defaultState: T, 
         onChangeCb?: (state: T) => void): T {
 
     if (onChangeCb === undefined) {
       onChangeCb = () => undefined;
     }
-    const store: IStore = getStore(storeType);
+    const store: IStore = getStore(storeId);
     if (store === undefined) {
-      throw new Error(`Couldn't find store of type "${storeType}".`);
+      throw new Error(`Couldn't find store with id "${storeId}".`);
     }
     store.init(defaultState);
 

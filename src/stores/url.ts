@@ -39,7 +39,7 @@ const setParams = obj => {
 
 export class UrlStore implements IStore {
     private cache = {};
-    public readonly type = 'url';
+    public readonly id = 'url';
     public init(initial: object) {
         const prev_params = getParams();
         const new_params = Object.keys(initial).map(k => {

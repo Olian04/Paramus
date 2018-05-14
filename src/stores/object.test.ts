@@ -7,7 +7,7 @@ import { ObjectStore } from './object';
 describe('object store', () => {
     it('implements IStore', () => {
         const objStore = new ObjectStore();
-        expect(objStore.type).to.equal('object');
+        expect(objStore.id).to.equal('object');
         expect(typeof objStore.get).to.equal('function');
         expect(typeof objStore.set).to.equal('function');
         expect(typeof objStore.init).to.equal('function');
