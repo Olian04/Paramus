@@ -6,5 +6,5 @@
  resources:
    - https://unpkg.com/paramus
 normalize_css: no
- js_wrap: d
+js_wrap: d
  ...
