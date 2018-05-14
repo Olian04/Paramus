@@ -1,4 +1,4 @@
-# Paramus
+# [Paramus](https://www.npmjs.com/package/paramus)
 
 Paramus is a persistent state-storage for small web applications
 
