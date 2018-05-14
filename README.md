@@ -27,7 +27,7 @@ const state = Paramus('url', {
    foo: 3, 
    bar: 42
 }, newState => {
-   // Triggers whenever a value is changed, ex: state.foo = 42
+   // Triggers whenever a value is changed, ex: state.foo = 7
 });
 
 console.log( state.foo ); // 3
