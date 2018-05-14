@@ -1,6 +1,6 @@
 {
   "name": "paramus",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "State store for small web applications",
   "main": "dist/paramus.js",
   "types": "dist/paramus.d.ts",
@@ -13,6 +13,15 @@
     "type": "git",
     "url": "git+https://github.com/Olian04/Paramus.git"
   },
+  "keywords": [
+    "state",
+    "storage",
+    "url",
+    "storage",
+    "cookie",
+    "persistent",
+    "web"
+  ],
   "author": "olian04",
   "license": "MIT",
   "bugs": {
