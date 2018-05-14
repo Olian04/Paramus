@@ -1,4 +1,4 @@
-# Paramus
+# [Paramus](https://www.npmjs.com/package/paramus)
 
 Paramus is a persistent state-storage for small web applications
 
@@ -17,7 +17,7 @@ npm i --save paramus
 
 ## API
 
-### `Paramus(storeType: string, initialState: object, onChangeCallback: newState => void)`
+### `Paramus<T>(storeId: string, initialState: T, onChangeCallback?: (state: T) => void): T`
 
 ```ts
 import { Paramus } from 'paramus';
@@ -28,7 +28,6 @@ const state = Paramus('url', {
    bar: 42
 }, newState => {
    // Triggers whenever a value is changed, ex: state.foo = 42
-   // any changes made to  newState won't persist
 });
 
 console.log( state.foo ); // 3
@@ -38,27 +37,22 @@ console.log( state.foo ); // 7
 
 ## Adding your own store
 
-### `Paramus.extend(extension: Store)`
+### `Paramus.extend(newStore)`
 
 ```ts
-class ObjectStore implements Store {
-    public readonly name = 'object';
-    public init(initial: object) {
+Paramus.extend({
+   id: 'object',
+   init(initial: object) {
       // Called when a new instance of Paramus is created with the storeType equal to 'object'
       // initial is the state object passed to Paramus
-    }
-    public get(key: string): any {
+   },
+   get(key: string): any {
       // Called whenever a parameter is read from 
-    }
-    public set(key: string, value: any) {
+   },
+   set(key: string, value: any) {
       // Called whenever a parameter is assigned to
-    }
-    public snapshot() {
-        // Needs to return an object representation of the current state
-        // Used to call onChange
-    }
-}
-Paramus.extend( new ObjectStore() );
+   }
+});
 ```
 
 
