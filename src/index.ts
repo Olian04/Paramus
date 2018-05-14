@@ -7,7 +7,7 @@ export interface IStore {
 }
 
 export interface IParamus {
-  <T>(storeType: string, defaultState: T, onChangeCb: (state: T) => void): T;
+  <T>(storeType: string, defaultState: T, onChangeCb?: (state: T) => void): T;
   extend(store: IStore): void;
   snapshot<T>()
 }
@@ -19,8 +19,11 @@ export const Internal = (): IParamus => {
   const paramus: IParamus = function<T extends object>(
         storeType: string, 
         defaultState: T, 
-        onChangeCb: (state: T) => void): T {
+        onChangeCb?: (state: T) => void): T {
 
+    if (onChangeCb === undefined) {
+      onChangeCb = () => undefined;
+    }
     const store: IStore = getStore(storeType);
     if (store === undefined) {
       throw new Error(`Couldn't find store of type "${storeType}".`);

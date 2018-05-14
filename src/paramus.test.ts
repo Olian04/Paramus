@@ -21,8 +21,8 @@ describe('init / get / set', () => {
             snapshot() {return {}}
         });
         const state = Paramus('test1', {
-            foo: 0, 
-         }, newState => {});
+            foo: 0
+         });
         state.foo;
         state.foo = 1;
     });
@@ -45,8 +45,8 @@ describe('init / get / set', () => {
             snapshot() { return {}}
         });
         const state = Paramus('test2', {
-            foo: [1, 2], 
-         }, newState => {});
+            foo: [1, 2]
+         });
         state.foo;
         state.foo[0] = 2;
     });
