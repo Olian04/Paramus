@@ -1,7 +1,7 @@
 {
   "name": "paramus",
-  "version": "1.0.1",
-  "description": "Paramus is a persistent state-storage for small web applications",
+  "version": "1.1.0",
+  "description": "State store for small web applications",
   "main": "dist/paramus.js",
   "types": "dist/paramus.d.ts",
   "scripts": {
