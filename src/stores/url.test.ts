@@ -15,7 +15,6 @@ describe('url store (empty)', () => {
         expect(typeof objStore.get).to.equal('function');
         expect(typeof objStore.set).to.equal('function');
         expect(typeof objStore.init).to.equal('function');
-        expect(typeof objStore.snapshot).to.equal('function');
     });
     
     it('no unintended side effects', () => {

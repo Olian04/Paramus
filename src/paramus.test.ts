@@ -4,6 +4,19 @@ import jsdom from 'mocha-jsdom';
 import { Paramus, IStore } from './paramus';
 
 describe('init / get / set', () => {
+    it('recursive assignment', () => {
+        const state = Paramus('object', {
+            foo: 0
+         }, newState => {
+             if (newState.foo < 3) {
+                 newState.foo++;
+             }
+             expect(newState.foo).to.equal(3);
+         });
+        expect(state.foo).to.equal(0);
+        state.foo++;
+    });
+
     it('single value', () => {
         Paramus.extend({
             type: 'test1',
@@ -17,8 +30,7 @@ describe('init / get / set', () => {
             init(initial) {
                 expect(initial).to.have.key('foo');
                 expect(initial['foo']).to.equal(0); 
-            },
-            snapshot() {return {}}
+            }
         });
         const state = Paramus('test1', {
             foo: 0
@@ -41,8 +53,7 @@ describe('init / get / set', () => {
             init(initial) {
                 expect(initial).to.have.key('foo');
                 expect(initial['foo']).to.deep.equal([1, 2]); 
-            },
-            snapshot() { return {}}
+            }
         });
         const state = Paramus('test2', {
             foo: [1, 2]

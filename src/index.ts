@@ -3,13 +3,12 @@ export interface IStore {
   init(defaultState: object): void;
   get(key: string): any;
   set(key: string, value: any);
-  snapshot(): object;
 }
 
 export interface IParamus {
   <T>(storeType: string, defaultState: T, onChangeCb?: (state: T) => void): T;
   extend(store: IStore): void;
-  snapshot<T>()
+  snapshot<T>();
 }
 
 export const Internal = (): IParamus => {
@@ -30,12 +29,13 @@ export const Internal = (): IParamus => {
     }
     store.init(defaultState);
 
+    let stateProxy: T;
     const update = (key, value) => {
       store.set(key, value);
-      onChangeCb(<T>store.snapshot());
+      onChangeCb(stateProxy);
     };
     
-    return Object.keys(defaultState).reduce((res, k) => {
+    stateProxy = Object.keys(defaultState).reduce((res, k) => {
       Object.defineProperty(res, k, {
         get: () => {
           const v = store.get(k);
@@ -58,6 +58,8 @@ export const Internal = (): IParamus => {
       });
       return res;
     }, Object.assign({}, defaultState));
+
+    return stateProxy;
   }.bind(this) as any;
 
   paramus.extend = newStore => {
