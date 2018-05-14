@@ -8,7 +8,6 @@ export interface IStore {
 export interface IParamus {
   <T>(storeType: string, defaultState: T, onChangeCb?: (state: T) => void): T;
   extend(store: IStore): void;
-  snapshot<T>();
 }
 
 export const Internal = (): IParamus => {
