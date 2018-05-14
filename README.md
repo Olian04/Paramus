@@ -43,7 +43,7 @@ console.log( state.foo ); // 7
 Paramus.extend({
    id: 'object',
    init(initial: object) {
-      // Called when a new instance of Paramus is created with the storeType equal to 'object'
+      // Called when a new instance of Paramus is created
       // initial is the state object passed to Paramus
    },
    get(key: string): any {
