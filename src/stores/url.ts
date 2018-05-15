@@ -69,9 +69,5 @@ export class UrlStore implements IStore {
         this.cache[key] = value;
         setParams(this.cache);
     }
-    public snapshot() {
-        this.cache = getParams();
-        return this.cache;
-    }
 }
 

@@ -12,8 +12,5 @@ export class ObjectStore implements IStore {
     public init(initial: object) {
         this.state = initial;
     }
-    public snapshot() {
-        return this.state;
-    }
 }
 
