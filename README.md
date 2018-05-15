@@ -23,7 +23,7 @@ npm i --save paramus
 
 ## API
 
-### `Paramus<T>(storeId: string, initialState: T, onChange?: (state: T) => void): T`
+### `Paramus<T>(storeId: string, initState: T, onChange?: (state: T) => void): T`
 
 ```ts
 import { Paramus } from 'paramus';
