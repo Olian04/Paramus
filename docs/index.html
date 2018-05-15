@@ -64,25 +64,27 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
+				<p><strong>Tests:</strong> <a href="https://circleci.com/gh/Olian04/Paramus"><img src="https://circleci.com/gh/Olian04/Paramus.svg?style=svg" alt="CircleCI"></a></p>
 				<h1 id="paramus">Paramus</h1>
-				<p>Paramus is a persistent state-storage for small web applications</p>
+				<p>Paramus is a state store for small web applications, with the goal to work in any stack in with any limitations. The purpose of Paramus is to provide persistent state storage in a none-intrusive way.</p>
+				<p>For example if your app relies on localstorage, then Paramus can run on the session storage. Or if your app relies on both local- and sessionstorage, then Paramus can run on the url, or in a cookie.</p>
+				<p>No matter what technologies your app uses, Paramus should be able to find a vacant technology to use for it self.</p>
 				<p><a href="https://jsfiddle.net/gh/get/library/pure/Olian04/Paramus/tree/master/demo">Demo Fiddle (WIP)</a></p>
-				<h2 id="npm">NPM</h2>
+				<h2 id="npm"><a href="https://www.npmjs.com/package/paramus">NPM</a></h2>
 				<pre><code>npm <span class="hljs-selector-tag">i</span> --save paramus
 </code></pre><h2 id="cdn">CDN</h2>
 				<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://unpkg.com/paramus"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
 				<h2 id="api">API</h2>
-				<h3 id="paramus-storetype-string-initialstate-object-onchangecallback-newstate-void-"><code>Paramus(storeType: string, initialState: object, onChangeCallback: newState =&gt; void)</code></h3>
+				<h3 id="paramus-storeid-string-initstate-t-onchange-state-t-void-t"><code>Paramus(storeId: string, initState: T, onChange?: (state: T) =&gt; void): T</code></h3>
 				<pre><code class="lang-ts"><span class="hljs-keyword">import</span> { Paramus } <span class="hljs-keyword">from</span> <span class="hljs-string">'paramus'</span>;
 
-<span class="hljs-comment">/* url | object | &lt;Paramus.extend&gt; + planned "sessionStorage | localStorage | cookie | indexedDB | webSQL"  */</span>
+<span class="hljs-comment">/* url | object | sessionStorage | localStorage | &lt;Paramus.extend&gt; + planned " cookie | indexedDB | webSQL"  */</span>
 <span class="hljs-keyword">const</span> state = Paramus(<span class="hljs-string">'url'</span>, {
    foo: <span class="hljs-number">3</span>, 
    bar: <span class="hljs-number">42</span>
 }, <span class="hljs-function"><span class="hljs-params">newState</span> =&gt;</span> {
-   <span class="hljs-comment">// Triggers whenever a value is changed, ex: state.foo = 42</span>
-   <span class="hljs-comment">// any changes made to  newState won't persist</span>
+   <span class="hljs-comment">// Triggers whenever a value is changed, ex: state.foo = 7</span>
 });
 
 <span class="hljs-built_in">console</span>.log( state.foo ); <span class="hljs-comment">// 3</span>
@@ -90,25 +92,20 @@ state.foo = <span class="hljs-number">7</span>;
 <span class="hljs-built_in">console</span>.log( state.foo ); <span class="hljs-comment">// 7</span>
 </code></pre>
 				<h2 id="adding-your-own-store">Adding your own store</h2>
-				<h3 id="paramus-extend-extension-store-"><code>Paramus.extend(extension: Store)</code></h3>
-				<pre><code class="lang-ts"><span class="hljs-keyword">class</span> ObjectStore <span class="hljs-keyword">implements</span> Store {
-    <span class="hljs-keyword">public</span> readonly name = <span class="hljs-string">'object'</span>;
-    <span class="hljs-keyword">public</span> init(initial: object) {
-      <span class="hljs-comment">// Called when a new instance of Paramus is created with the storeType equal to 'object'</span>
+				<h3 id="paramus-extend-newstore-"><code>Paramus.extend(newStore)</code></h3>
+				<pre><code class="lang-ts">Paramus.extend({
+   id: <span class="hljs-string">'object'</span>,
+   init(initial: object) {
+      <span class="hljs-comment">// Called when a new instance of Paramus is created</span>
       <span class="hljs-comment">// initial is the state object passed to Paramus</span>
-    }
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">get</span>(key: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">any</span> {
+   },
+   <span class="hljs-keyword">get</span>(key: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">any</span> {
       <span class="hljs-comment">// Called whenever a parameter is read from </span>
-    }
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">set</span>(key: <span class="hljs-built_in">string</span>, value: <span class="hljs-built_in">any</span>) {
+   },
+   <span class="hljs-keyword">set</span>(key: <span class="hljs-built_in">string</span>, value: <span class="hljs-built_in">any</span>) {
       <span class="hljs-comment">// Called whenever a parameter is assigned to</span>
-    }
-    <span class="hljs-keyword">public</span> snapshot() {
-        <span class="hljs-comment">// Needs to return an object representation of the current state</span>
-        <span class="hljs-comment">// Used to call onChange</span>
-    }
-}
-Paramus.extend( <span class="hljs-keyword">new</span> ObjectStore() );
+   }
+});
 </code></pre>
 			</div>
 		</div>
@@ -123,7 +120,13 @@ Paramus.extend( <span class="hljs-keyword">new</span> ObjectStore() );
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/localstoragestore.html" class="tsd-kind-icon">Localstorage<wbr>Store</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
 						<a href="classes/objectstore.html" class="tsd-kind-icon">Object<wbr>Store</a>
+					</li>
+					<li class=" tsd-kind-class tsd-is-external">
+						<a href="classes/sessionstoragestore.html" class="tsd-kind-icon">Sessionstorage<wbr>Store</a>
 					</li>
 					<li class=" tsd-kind-class tsd-is-external">
 						<a href="classes/urlstore.html" class="tsd-kind-icon">Url<wbr>Store</a>

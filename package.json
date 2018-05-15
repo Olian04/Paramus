@@ -8,6 +8,7 @@
     "prepublish": "npm run build",
     "test": "mocha --recursive -r ts-node/register 'src/**/*.test.ts' ",
     "prebuild": "npm run test",
+    "postbuild": "npm run doc",
     "build": "tsc",
     "doc": "typedoc --mode file --out docs/ src/paramus.ts"
   },
