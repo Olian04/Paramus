@@ -1,3 +1,5 @@
+**_Circleci:_** [![CircleCI](https://circleci.com/gh/Olian04/Paramus.svg?style=svg)](https://circleci.com/gh/Olian04/Paramus)
+
 # [Paramus](https://www.npmjs.com/package/paramus)
 
 Paramus is a state store for small web applications, with the goal to work in any stack in with any limitations. The purpose of Paramus is to provide persistent state storage in a none-intrusive way.
