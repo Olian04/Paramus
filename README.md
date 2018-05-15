@@ -1,7 +1,9 @@
 # [Paramus](https://www.npmjs.com/package/paramus)
 
 Paramus is a state store for small web applications, with the goal to work in any stack in with any limitations. The purpose of Paramus is to provide persistent state storage in a none-intrusive way.
+
 For example if your app relies on localstorage, then Paramus can run on the session storage. Or if your app relies on both local- and sessionstorage, then Paramus can run on the url, or in a cookie.
+
 No matter what technologies your app uses, Paramus should be able to find a vacant technology to use for it self.
 
 [Demo Fiddle (WIP)](https://jsfiddle.net/gh/get/library/pure/Olian04/Paramus/tree/master/demo)
