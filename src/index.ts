@@ -11,8 +11,8 @@ export interface IParamus {
 }
 
 export const Internal = (): IParamus => {
-  const stores: IStore[] = [];
-  const getStore = (id: string) => stores.find(s => s.id === id);
+  const stores: { [k: string]: IStore } = {};
+  const getStore = (id: string) => stores[id];
 
   const paramus: IParamus = function<T extends object>(
         storeId: string, 
@@ -62,7 +62,7 @@ export const Internal = (): IParamus => {
   }.bind(this) as any;
 
   paramus.extend = newStore => {
-    stores.push(newStore);
+    stores[newStore.id] = newStore;
   };
   
   return paramus;

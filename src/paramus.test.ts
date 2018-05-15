@@ -19,7 +19,7 @@ describe('init / get / set', () => {
 
     it('single value', () => {
         Paramus.extend({
-            id: 'test1',
+            id: 'test',
             get(key) {    
                 expect(key).to.equal('foo'); 
             },
@@ -32,7 +32,7 @@ describe('init / get / set', () => {
                 expect(initial['foo']).to.equal(0); 
             }
         });
-        const state = Paramus('test1', {
+        const state = Paramus('test', {
             foo: 0
          });
         state.foo;
@@ -41,7 +41,7 @@ describe('init / get / set', () => {
 
     it('array', () => {
         Paramus.extend({
-            id: 'test2',
+            id: 'test',
             get(key) {    
                 expect(key).to.equal('foo'); 
                 return [1, 2]; // state.foo[0] = 2; <=> v = state.get('foo'); v[0] = 2; state.set('foo', v);
@@ -55,7 +55,7 @@ describe('init / get / set', () => {
                 expect(initial['foo']).to.deep.equal([1, 2]); 
             }
         });
-        const state = Paramus('test2', {
+        const state = Paramus('test', {
             foo: [1, 2]
          });
         state.foo;
