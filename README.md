@@ -28,7 +28,7 @@ npm i --save paramus
 ```ts
 import { Paramus } from 'paramus';
 
-/* url | object | <Paramus.extend> + planned "sessionStorage | localStorage | cookie | indexedDB | webSQL"  */
+/* url | object | sessionStorage | localStorage | <Paramus.extend> + planned " cookie | indexedDB | webSQL"  */
 const state = Paramus('url', {
    foo: 3, 
    bar: 42
