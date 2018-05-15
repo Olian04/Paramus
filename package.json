@@ -1,11 +1,13 @@
 {
   "name": "paramus",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "description": "State store for small web applications",
   "main": "dist/paramus.js",
   "types": "dist/paramus.d.ts",
   "scripts": {
+    "prepublish": "npm run build",
     "test": "mocha --recursive -r ts-node/register 'src/**/*.test.ts' ",
+    "prebuild": "npm run test",
     "build": "tsc",
     "doc": "typedoc --mode file --out docs/ src/paramus.ts"
   },
