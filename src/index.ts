@@ -12,7 +12,7 @@ export interface IParamus {
 
 export const Internal = (): IParamus => {
   const stores: { [k: string]: IStore } = {};
-  const getStore = (id: string) => stores[id];
+  const getStore = (id: string) => stores[id.toLowerCase()];
 
   const paramus: IParamus = function<T extends object>(
         storeId: string, 
@@ -62,7 +62,7 @@ export const Internal = (): IParamus => {
   }.bind(this) as any;
 
   paramus.extend = newStore => {
-    stores[newStore.id] = newStore;
+    stores[newStore.id.toLowerCase()] = newStore;
   };
   
   return paramus;
