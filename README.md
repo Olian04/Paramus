@@ -1,4 +1,4 @@
-**_Circleci:_** [![CircleCI](https://circleci.com/gh/Olian04/Paramus.svg?style=svg)](https://circleci.com/gh/Olian04/Paramus)
+**Tests:** [![CircleCI](https://circleci.com/gh/Olian04/Paramus.svg?style=svg)](https://circleci.com/gh/Olian04/Paramus)
 
 # [Paramus](https://www.npmjs.com/package/paramus)
 
