@@ -1,6 +1,6 @@
 **Tests:** [![CircleCI](https://circleci.com/gh/Olian04/Paramus.svg?style=svg)](https://circleci.com/gh/Olian04/Paramus)
 
-# [Paramus](https://www.npmjs.com/package/paramus)
+# Paramus
 
 Paramus is a state store for small web applications, with the goal to work in any stack in with any limitations. The purpose of Paramus is to provide persistent state storage in a none-intrusive way.
 
@@ -10,7 +10,7 @@ No matter what technologies your app uses, Paramus should be able to find a vaca
 
 [Demo Fiddle (WIP)](https://jsfiddle.net/gh/get/library/pure/Olian04/Paramus/tree/master/demo)
 
-## NPM
+## [NPM](https://www.npmjs.com/package/paramus)
 ```
 npm i --save paramus
 ```
