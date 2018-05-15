@@ -1,6 +1,6 @@
 {
   "name": "paramus",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "State store for small web applications",
   "main": "dist/paramus.js",
   "types": "dist/paramus.d.ts",
