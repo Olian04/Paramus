@@ -1,8 +1,10 @@
+import { TypeHandler, DataType } from "./typehandler";
+
 export interface IStore {
   readonly id: string;
-  init(defaultState: object): void;
-  get(key: string): any;
-  set(key: string, value: any);
+  init(defaultState: object, types: {[key: string]: DataType}): void;
+  get(key: string, type: DataType): any;
+  set(key: string, value: any, type: DataType);
 }
 
 export interface IParamus {
@@ -11,6 +13,7 @@ export interface IParamus {
 }
 
 export const Internal = (): IParamus => {
+  const typeHandler = TypeHandler();
   const stores: { [k: string]: IStore } = {};
   const getStore = (id: string) => stores[id.toLowerCase()];
 
@@ -26,18 +29,19 @@ export const Internal = (): IParamus => {
     if (store === undefined) {
       throw new Error(`Couldn't find store with id "${storeId}".`);
     }
-    store.init(defaultState);
+    Object.keys(defaultState).forEach(k => typeHandler.store(k, defaultState[k]));
+    store.init(defaultState, typeHandler.snapshot());
 
     let stateProxy: T;
     const update = (key, value) => {
-      store.set(key, value);
+      store.set(key, value, typeHandler.fetch(key));
       onChangeCb(stateProxy);
     };
     
     stateProxy = Object.keys(defaultState).reduce((res, k) => {
       Object.defineProperty(res, k, {
         get: () => {
-          const v = store.get(k);
+          const v = store.get(k, typeHandler.fetch(k));
           if ( Array.isArray(v) ) {
             // Return a proxy that watches for calls like arr[...]
             return new Proxy(v, {
