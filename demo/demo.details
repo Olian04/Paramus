@@ -6,5 +6,8 @@
  resources:
    - https://unpkg.com/paramus
 normalize_css: no
-js_wrap: d
  ...
+ 
+ 
+This just randomly stoped working....
+js_wrap: d
