@@ -7,7 +7,7 @@ window.onload = function() {
 	const store = Paramus('url', { 
 		count: 0
 	}, store => {
-	  output.innerHTML = '' + store.count;
+	  output.innerHTML = ''+store.count;
 	});
 
 	root.innerHTML = '';
@@ -20,4 +20,6 @@ window.onload = function() {
 
 	decrement.innerHTML = '-';
 	decrement.onclick = () => store.count--;
+	
+	output.innerHTML = ''+0;
 }
