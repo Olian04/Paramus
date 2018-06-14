@@ -12,7 +12,7 @@ export class LocalstorageStore implements IStore {
         const val = window.localStorage.getItem(key);
         switch(type) {
             case DataType.Number:
-                break;
+                return parseFloat(val);
             case DataType.Array:
                 return JSON.parse(`{ "x": ${val}}`).x;
             case DataType.String:
