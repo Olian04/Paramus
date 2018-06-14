@@ -1,5 +1,6 @@
 import { IStore } from '../index';
 
+// @internal
 export class ObjectStore implements IStore {
     private state = {};
     public readonly id = 'object';

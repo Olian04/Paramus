@@ -37,6 +37,7 @@ const setParams = obj => {
     history.pushState({}, document.title, str);
 }
 
+// @internal
 export class UrlStore implements IStore {
     private cache = {};
     public readonly id = 'url';
