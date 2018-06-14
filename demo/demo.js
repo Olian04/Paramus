@@ -4,22 +4,19 @@ window.onload = function() {
 	const output = document.createElement('p');
 	const root = document.getElementById('root');
 
-	const store = Paramus('url', { 
-		count: 0
-	}, store => {
-	  output.innerHTML = ''+store.count;
-	});
-
+  	increment.innerHTML = '+';
+  	decrement.innerHTML = '-';
 	root.innerHTML = '';
 	root.appendChild(increment);
 	root.appendChild(decrement);
 	root.appendChild(output);
 
-	increment.innerHTML = '+';
-	increment.onclick = () => store.count++;
-
-	decrement.innerHTML = '-';
-	decrement.onclick = () => store.count--;
-	
-	output.innerHTML = ''+0;
+	Paramus('url', { 
+	  count: 0
+	}, store => {
+	  output.innerHTML = ''+store.count;
+    	  increment.onclick = () => store.count++;
+    	  decrement.onclick = () => store.count--;
+    	  console.log(location.href);
+	});
 }
