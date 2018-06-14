@@ -10,9 +10,9 @@ const store = Paramus('url', {
 });
 
 root.innerHTML = '';
-root.appendChildren([ 
-		increment, decrement, output
-]);
+root.appendChild(increment);
+root.appendChild(decrement);
+root.appendChild(output);
 	
 increment.innerHTML = '+';
 increment.onclick = () => store.count++;
