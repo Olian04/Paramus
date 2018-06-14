@@ -18,15 +18,22 @@ describe('url store (empty)', () => {
     });
     
     it('no unintended side effects', () => {
+        let counter = 0;
         const state = Paramus('url', {
             foo: 3, 
             bar: ''
          }, newState => {
-            expect(newState.foo).to.equal(3);
-            expect(newState.bar).to.equal('hello world');
+             if (counter === 0) {
+                expect(newState.foo).to.equal(3);
+                expect(newState.bar).to.equal('');
+             } else if (counter === 1) {
+                 expect(newState.foo).to.equal(3);
+                 expect(newState.bar).to.equal('hello world');
+             }
+             counter++;
          });
-        expect(state.foo).to.equal(3);
-        state.bar = 'hello world';
+         state.bar = 'hello world';
+         expect(state.foo).to.equal(3);
         expect(state.bar).to.equal('hello world');
     });
 
@@ -61,15 +68,23 @@ describe('url store (?foo=2&arr=3)', () => {
     });
 
     it('no unintended side effects', () => {
+        let counter = 0;
         const state = Paramus('url', {
             foo: 3, 
             bar: ''
          }, newState => {
-            expect(newState.foo).to.equal(2);
-            expect(newState.bar).to.equal('hello world');
+             if (counter === 0) {
+                expect(newState.foo).to.equal(2);
+                expect(newState.bar).to.equal('');
+             } else if (counter === 1) {
+                 expect(newState.foo).to.equal(2);
+                 expect(newState.bar).to.equal('hello world');
+             }
+             counter++;
          });
-        expect(state.foo).to.equal(2);
-        state.bar = 'hello world';
+
+         state.bar = 'hello world';
+         expect(state.foo).to.equal(2);
         expect(state.bar).to.equal('hello world');
     });
 

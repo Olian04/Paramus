@@ -14,15 +14,22 @@ describe('object store', () => {
     });
 
     it('no unintended side effects', () => {
+        let counter = 0;
         const state = Paramus('object', {
             foo: 3, 
             bar: ''
          }, newState => {
-            expect(newState.foo).to.equal(3);
-            expect(newState.bar).to.equal('hello world');
-         });
-        expect(state.foo).to.equal(3);
+             if (counter === 0) {
+                 expect(newState.foo).to.equal(3);
+                 expect(newState.bar).to.equal('');
+            } else if (counter === 1) {
+                expect(newState.foo).to.equal(3);
+                expect(newState.bar).to.equal('hello world');
+            }
+            counter++;
+        });
         state.bar = 'hello world';
+        expect(state.foo).to.equal(3);
         expect(state.bar).to.equal('hello world');
     });
 

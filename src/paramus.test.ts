@@ -12,8 +12,7 @@ describe('init / get / set', () => {
              }
              expect(newState.foo).to.equal(3);
          });
-        expect(state.foo).to.equal(0);
-        state.foo++;
+        expect(state.foo).to.equal(3);
     });
 
     it('single value', () => {

@@ -62,6 +62,7 @@ export const Internal = (): IParamus => {
       return res;
     }, Object.assign({}, defaultState));
 
+    onChangeCb(stateProxy);
     return stateProxy;
   }.bind(this) as any;
 
