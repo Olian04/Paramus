@@ -9,10 +9,11 @@ Paramus.extend( new ObjectStore() );
 import { UrlStore } from './stores/url';
 Paramus.extend( new UrlStore() );
 
+/*
 import { LocalstorageStore } from './stores/localstorage';
 Paramus.extend( new LocalstorageStore() );
 
 import { SessionstorageStore } from './stores/sessionstorage';
 Paramus.extend( new SessionstorageStore() );
-
+*/
 
