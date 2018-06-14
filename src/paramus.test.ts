@@ -1,7 +1,6 @@
 import { expect } from 'chai';
-import jsdom from 'mocha-jsdom';
 
-import { Paramus, IStore } from './paramus';
+import { Paramus } from './paramus';
 
 describe('init / get / set', () => {
     it('recursive assignment', () => {

@@ -31,4 +31,7 @@ jobs:
       # run tests!
       - run: npm test
 
+      # Test build, just in case
+      - run: npm run build
+
 
