@@ -1,6 +1,6 @@
 {
   "name": "paramus",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "State store for small web applications",
   "main": "dist/paramus.js",
   "types": "dist/paramus.d.ts",
@@ -8,7 +8,8 @@
     "prepublishOnly": "npm run build",
     "test": "mocha --recursive -r ts-node/register 'src/**/*.test.ts' ",
     "prebuild": "npm run test",
-    "build": "parcel build src/paramus.ts"
+    "build": "parcel build src/paramus.ts --detailed-report",
+    "postbuild": "tsc --emitDeclarationOnly --stripInternal"
   },
   "repository": {
     "type": "git",
@@ -31,7 +32,7 @@
   "devDependencies": {
     "@types/chai": "^4.1.4",
     "@types/es6-promise": "3.3.0",
-    "@types/jsdom": "^11.0.5",
+    "@types/jsdom": "^11.0.4",
     "@types/mocha": "^5.2.2",
     "@types/node": "^10.3.3",
     "@types/typescript": "^2.0.0",
