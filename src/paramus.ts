@@ -1,4 +1,4 @@
-import { Internal, IParamus } from './index';
+import { Internal } from './index';
 export { IStore } from './index';
 
 export const Paramus = Internal();
