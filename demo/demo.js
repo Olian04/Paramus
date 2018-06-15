@@ -4,19 +4,19 @@ window.onload = function() {
 	const output = document.createElement('p');
 	const root = document.getElementById('root');
 
-  	increment.innerHTML = '+';
-  	decrement.innerHTML = '-';
+	increment.innerHTML = '+';
+	decrement.innerHTML = '-';
 	root.innerHTML = '';
 	root.appendChild(increment);
 	root.appendChild(decrement);
 	root.appendChild(output);
 
 	Paramus('url', { 
-	  count: 0
+		count: 0
 	}, store => {
-	  output.innerHTML = ''+store.count;
-    	  increment.onclick = () => store.count++;
-    	  decrement.onclick = () => store.count--;
-    	  console.log(location.href);
+		output.innerHTML = ''+store.count;
+		increment.onclick = () => store.count++;
+		decrement.onclick = () => store.count--;
+		console.log(location.href);
 	});
 }
