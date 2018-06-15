@@ -5,7 +5,6 @@
    - Olian04
  resources:
    - https://unpkg.com/paramus
-normalize_css: no
  ...
  
  
