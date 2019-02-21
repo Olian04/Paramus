@@ -10,7 +10,7 @@ No matter what technologies your app uses, Paramus should be able to find a vaca
 
 [Demo Fiddle (WIP)](https://jsfiddle.net/gh/get/library/pure/Olian04/Paramus/tree/master/demo)
 
-__Help me help you:__ <a href="https://www.buymeacoffee.com/fEvx1NCoS" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
+__Help me help you:__ <a href="https://www.buymeacoffee.com/olian04" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
 
 ## Install
 
